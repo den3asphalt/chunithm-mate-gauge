@@ -1,0 +1,21 @@
+javascript: (function () {
+    let b = document.querySelector('img[src*="mate_gauge_base.png"]'),
+        d = document.querySelector(".character_gage_bar3");
+    if (!b || !d) return alert("要素なし");
+    let e = parseFloat(b.getAttribute("width")),
+        t = d.getBoundingClientRect().width,
+        f = t - e,
+        n = Math.round(f),
+        m = Math.round(t),
+        g = (x, y) => (y ? g(y, x % y) : x),
+        c = g(Math.abs(n), Math.abs(m));
+    alert(
+        "現在量(約分): " +
+            n / c +
+            "/" +
+            m / c +
+            "\nパーセンテージ: " +
+            ((f / t) * 100).toFixed(2) +
+            "%",
+    );
+})();
